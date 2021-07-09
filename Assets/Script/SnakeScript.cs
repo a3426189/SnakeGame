@@ -9,9 +9,15 @@ public class SnakeScript : MonoBehaviour
     private float timeMax;
 
     private float Move_timecounter = 0f;
+
+    private LevelGrid levelGrid;
+    public void SnakeGetLevelGrid(LevelGrid levelGrid)
+    {
+        this.levelGrid = levelGrid;
+    }
     private void Awake()
     {
-        transform.position = new Vector3(0.5f, 0.5f, 0);
+        transform.position = new Vector3(0f, 0f, 0);
     }
     // Start is called before the first frame update
     void Start()
@@ -53,7 +59,20 @@ public class SnakeScript : MonoBehaviour
         else
         {
             Move_timecounter -= timeMax;
+            Vector3 Temp = transform.position;
             transform.position += gridPos;
+
+            if (transform.position.x > 10 || transform.position.x < -10 || transform.position.y > 10 || transform.position.y < -10)
+            {
+                transform.position = Temp;
+            }
+            levelGrid.snakeMoved(transform.position);
+            //SnakeMoved(transform.position);
         }
+
+    }
+    public Vector3 GetPosition()
+    {
+        return transform.position;
     }
 }
