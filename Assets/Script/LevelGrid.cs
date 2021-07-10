@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGrid : MonoBehaviour
+public class LevelGrid
 {
     private Vector3 foodGridPosition;
     GameObject AppleGO;
@@ -11,11 +11,11 @@ public class LevelGrid : MonoBehaviour
 
     private int Point = 0;
 
-    public LevelGrid(int width,int height)
+    public LevelGrid(int width, int height)
     {
         this.width = width;
         this.height = height;
-        
+
     }
     public void GetSnakeScript(SnakeScript snakeScript)
     {
